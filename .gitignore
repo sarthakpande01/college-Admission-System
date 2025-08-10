@@ -1,0 +1,10 @@
+# Ignore local start scripts
+start-server.bat
+start-server.ps1
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore temporary files
+*.log
