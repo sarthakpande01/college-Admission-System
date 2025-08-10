@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Counseling Portal</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>Admin Panel</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#students" class="nav-link">Students</a>
+                <a href="#rankings" class="nav-link">Rankings</a>
+                <a href="#allocations" class="nav-link">Allocations</a>
+                <a href="#payments" class="nav-link">Payments</a>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Overview -->
+        <section id="dashboard" class="dashboard-section">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>Admin Dashboard</h1>
+                    <p>Manage student counseling and allocations</p>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Students</h3>
+                            <p id="totalStudents">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Profile Complete</h3>
+                            <p id="profileComplete">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Marks Submitted</h3>
+                            <p id="marksSubmitted">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Payments Verified</h3>
+                            <p id="paymentsVerified">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="generateRankings()">
+                            <i class="fas fa-sort-amount-down"></i>
+                            Generate Rankings
+                        </button>
+                        <button class="action-btn" onclick="allocateSeats()">
+                            <i class="fas fa-building"></i>
+                            Allocate Seats
+                        </button>
+                        <button class="action-btn" onclick="verifyPayments()">
+                            <i class="fas fa-check-circle"></i>
+                            Verify Payments
+                        </button>
+                        <button class="action-btn" onclick="generateReports()">
+                            <i class="fas fa-file-alt"></i>
+                            Generate Reports
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Students Management -->
+        <section id="students" class="table-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Student Management</h2>
+                    <div class="search-filter">
+                        <input type="text" id="studentSearch" placeholder="Search students..." onkeyup="filterStudents()">
+                        <select id="statusFilter" onchange="filterStudents()">
+                            <option value="">All Status</option>
+                            <option value="profile-complete">Profile Complete</option>
+                            <option value="marks-submitted">Marks Submitted</option>
+                            <option value="allocated">Allocated</option>
+                            <option value="payment-verified">Payment Verified</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="studentsTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Profile Status</th>
+                                <th>Marks Status</th>
+                                <th>Total Marks</th>
+                                <th>Rank</th>
+                                <th>Allocated Branch</th>
+                                <th>Payment Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rankings Section -->
+        <section id="rankings" class="table-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Student Rankings</h2>
+                    <button class="btn-primary" onclick="generateRankings()">
+                        <i class="fas fa-sort-amount-down"></i>
+                        Generate Rankings
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table id="rankingsTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Total Marks (10+2)</th>
+                                <th>Physics</th>
+                                <th>Chemistry</th>
+                                <th>Mathematics</th>
+                                <th>English</th>
+                                <th>Preference 1</th>
+                                <th>Preference 2</th>
+                                <th>Allocated Branch</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rankingsTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seat Allocation Section -->
+        <section id="allocations" class="form-section">
+            <div class="container">
+                <h2>Seat Allocation</h2>
+                <div class="allocation-controls">
+                    <button class="btn-primary" onclick="allocateSeats()">
+                        <i class="fas fa-building"></i>
+                        Auto Allocate Seats
+                    </button>
+                    <button class="btn-secondary" onclick="manualAllocation()">
+                        <i class="fas fa-edit"></i>
+                        Manual Allocation
+                    </button>
+                </div>
+
+                <div class="branch-seats">
+                    <h3>Available Seats by Branch</h3>
+                    <div class="seats-grid">
+                        <div class="seat-card">
+                            <h4>Computer Science</h4>
+                            <p>Available: <span id="csSeats">120</span></p>
+                            <p>Allocated: <span id="csAllocated">0</span></p>
+                        </div>
+                        <div class="seat-card">
+                            <h4>Mechanical</h4>
+                            <p>Available: <span id="mechSeats">100</span></p>
+                            <p>Allocated: <span id="mechAllocated">0</span></p>
+                        </div>
+                        <div class="seat-card">
+                            <h4>Electrical</h4>
+                            <p>Available: <span id="elecSeats">80</span></p>
+                            <p>Allocated: <span id="elecAllocated">0</span></p>
+                        </div>
+                        <div class="seat-card">
+                            <h4>Civil</h4>
+                            <p>Available: <span id="civilSeats">90</span></p>
+                            <p>Allocated: <span id="civilAllocated">0</span></p>
+                        </div>
+                        <div class="seat-card">
+                            <h4>Electronics</h4>
+                            <p>Available: <span id="eceSeats">70</span></p>
+                            <p>Allocated: <span id="eceAllocated">0</span></p>
+                        </div>
+                        <div class="seat-card">
+                            <h4>Chemical</h4>
+                            <p>Available: <span id="chemSeats">60</span></p>
+                            <p>Allocated: <span id="chemAllocated">0</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="allocation-list">
+                    <h3>Allocation Results</h3>
+                    <div class="table-container">
+                        <table id="allocationTable" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Student Name</th>
+                                    <th>Total Marks</th>
+                                    <th>Preference 1</th>
+                                    <th>Preference 2</th>
+                                    <th>Allocated Branch</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allocationTableBody">
+                                <!-- Data will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Verification Section -->
+        <section id="payments" class="table-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Payment Verification</h2>
+                    <button class="btn-primary" onclick="verifyAllPayments()">
+                        <i class="fas fa-check-circle"></i>
+                        Verify All Pending
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table id="paymentsTable" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Transaction ID</th>
+                                <th>Bank</th>
+                                <th>Receipt</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Manual Allocation Modal -->
+    <div id="manualAllocationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeManualAllocation()">&times;</span>
+            <div class="modal-header">
+                <h2>Manual Seat Allocation</h2>
+            </div>
+            <div class="modal-body">
+                <form id="manualAllocationForm">
+                    <div class="form-group">
+                        <label for="studentSelect">Select Student</label>
+                        <select id="studentSelect" required>
+                            <option value="">Choose a student...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="branchSelect">Allocate Branch</label>
+                        <select id="branchSelect" required>
+                            <option value="">Choose a branch...</option>
+                            <option value="computer-science">Computer Science Engineering</option>
+                            <option value="mechanical">Mechanical Engineering</option>
+                            <option value="electrical">Electrical Engineering</option>
+                            <option value="civil">Civil Engineering</option>
+                            <option value="electronics">Electronics & Communication</option>
+                            <option value="chemical">Chemical Engineering</option>
+                            <option value="biotechnology">Biotechnology</option>
+                            <option value="information-technology">Information Technology</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Allocate Seat</button>
+                        <button type="button" class="btn-secondary" onclick="closeManualAllocation()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Verification Modal -->
+    <div id="paymentVerificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentVerification()">&times;</span>
+            <div class="modal-header">
+                <h2>Payment Verification</h2>
+            </div>
+            <div class="modal-body">
+                <div id="paymentDetails">
+                    <!-- Payment details will be populated -->
+                </div>
+                <div class="form-actions">
+                    <button class="btn-success" onclick="approvePayment()">
+                        <i class="fas fa-check"></i>
+                        Approve Payment
+                    </button>
+                    <button class="btn-danger" onclick="rejectPayment()">
+                        <i class="fas fa-times"></i>
+                        Reject Payment
+                    </button>
+                    <button class="btn-secondary" onclick="closePaymentVerification()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html> 

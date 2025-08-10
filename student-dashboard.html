@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Counseling Portal</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudentCounsel</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#profile" class="nav-link">Profile</a>
+                <a href="#academics" class="nav-link">Academics</a>
+                <a href="#counseling" class="nav-link">Counseling</a>
+                <a href="#payments" class="nav-link">Payments</a>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Overview -->
+        <section id="dashboard" class="dashboard-section">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>Welcome back, <span id="studentName">Student</span>!</h1>
+                    <p>Track your academic progress and counseling status</p>
+                </div>
+
+                <!-- Status Cards -->
+                <div class="status-grid">
+                    <div class="status-card">
+                        <div class="status-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="status-content">
+                            <h3>Profile Status</h3>
+                            <p id="profileStatus">Not Complete</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="status-content">
+                            <h3>Academic Rank</h3>
+                            <p id="academicRank">Not Available</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="status-content">
+                            <h3>Branch Allocation</h3>
+                            <p id="branchAllocation">Pending</p>
+                        </div>
+                    </div>
+                    <div class="status-card">
+                        <div class="status-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="status-content">
+                            <h3>Payment Status</h3>
+                            <p id="paymentStatus">Not Paid</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="showProfileForm()">
+                            <i class="fas fa-user-edit"></i>
+                            Update Profile
+                        </button>
+                        <button class="action-btn" onclick="showAcademicForm()">
+                            <i class="fas fa-graduation-cap"></i>
+                            Submit Marks
+                        </button>
+                        <button class="action-btn" onclick="showPaymentForm()">
+                            <i class="fas fa-credit-card"></i>
+                            Make Payment
+                        </button>
+                        <button class="action-btn" onclick="viewOfferLetter()">
+                            <i class="fas fa-file-alt"></i>
+                            View Offer Letter
+                        </button>
+                        <button class="action-btn" onclick="testFormSubmission()" style="background-color: #ff6b6b;">
+                            <i class="fas fa-bug"></i>
+                            Test Form Submission
+                        </button>
+                        <button class="action-btn" onclick="createSampleStudents()" style="background-color: #4ecdc4;">
+                            <i class="fas fa-users"></i>
+                            Create Sample Students
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="form-section">
+            <div class="container">
+                <h2>Personal Information</h2>
+                <form id="profileForm" class="dashboard-form" novalidate>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName">
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth *</label>
+                            <input type="date" id="dateOfBirth" name="dateOfBirth">
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender *</label>
+                            <select id="gender" name="gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address *</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State *</label>
+                            <input type="text" id="state" name="state">
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">Pincode *</label>
+                            <input type="text" id="pincode" name="pincode">
+                        </div>
+                        <div class="form-group">
+                            <label for="parentName">Parent/Guardian Name *</label>
+                            <input type="text" id="parentName" name="parentName">
+                        </div>
+                        <div class="form-group">
+                            <label for="parentPhone">Parent/Guardian Phone *</label>
+                            <input type="tel" id="parentPhone" name="parentPhone">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn" onclick="console.log('Submit button clicked!')">
+                            <i class="fas fa-save"></i>
+                            Save Profile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Academic Marks Section -->
+        <section id="academics" class="form-section">
+            <div class="container">
+                <h2>Academic Information</h2>
+                <form id="academicForm" class="dashboard-form">
+                    <!-- High School Marks -->
+                    <div class="academic-section">
+                        <h3>High School (10th) Marks</h3>
+                        <div class="marks-grid">
+                            <div class="form-group">
+                                <label for="math10">Mathematics *</label>
+                                <input type="number" id="math10" name="math10" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="science10">Science *</label>
+                                <input type="number" id="science10" name="science10" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="english10">English *</label>
+                                <input type="number" id="english10" name="english10" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hindi10">Hindi *</label>
+                                <input type="number" id="hindi10" name="hindi10" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="social10">Social Studies *</label>
+                                <input type="number" id="social10" name="social10" min="0" max="100" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 10+2 Marks -->
+                    <div class="academic-section">
+                        <h3>Higher Secondary (10+2) Marks</h3>
+                        <div class="marks-grid">
+                            <div class="form-group">
+                                <label for="physics12">Physics *</label>
+                                <input type="number" id="physics12" name="physics12" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="chemistry12">Chemistry *</label>
+                                <input type="number" id="chemistry12" name="chemistry12" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="math12">Mathematics *</label>
+                                <input type="number" id="math12" name="math12" min="0" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="english12">English *</label>
+                                <input type="number" id="english12" name="english12" min="0" max="100" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Branch Preferences -->
+                    <div class="academic-section">
+                        <h3>Branch Preferences</h3>
+                        <div class="preferences-grid">
+                            <div class="form-group">
+                                <label for="preference1">First Preference *</label>
+                                <select id="preference1" name="preference1" required>
+                                    <option value="">Select Branch</option>
+                                    <option value="computer-science">Computer Science Engineering</option>
+                                    <option value="mechanical">Mechanical Engineering</option>
+                                    <option value="electrical">Electrical Engineering</option>
+                                    <option value="civil">Civil Engineering</option>
+                                    <option value="electronics">Electronics & Communication</option>
+                                    <option value="chemical">Chemical Engineering</option>
+                                    <option value="biotechnology">Biotechnology</option>
+                                    <option value="information-technology">Information Technology</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="preference2">Second Preference *</label>
+                                <select id="preference2" name="preference2" required>
+                                    <option value="">Select Branch</option>
+                                    <option value="computer-science">Computer Science Engineering</option>
+                                    <option value="mechanical">Mechanical Engineering</option>
+                                    <option value="electrical">Electrical Engineering</option>
+                                    <option value="civil">Civil Engineering</option>
+                                    <option value="electronics">Electronics & Communication</option>
+                                    <option value="chemical">Chemical Engineering</option>
+                                    <option value="biotechnology">Biotechnology</option>
+                                    <option value="information-technology">Information Technology</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn" onclick="console.log('Academic submit button clicked!')">
+                            <i class="fas fa-graduation-cap"></i>
+                            Submit Academic Details
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Counseling Section -->
+        <section id="counseling" class="form-section">
+            <div class="container">
+                <h2>Counseling Information</h2>
+                <div class="counseling-info">
+                    <div class="counseling-card">
+                        <h3>Your Counseling Status</h3>
+                        <div class="status-details">
+                            <div class="status-item">
+                                <span class="status-label">Application Status:</span>
+                                <span class="status-value" id="applicationStatus">Under Review</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Rank:</span>
+                                <span class="status-value" id="counselingRank">Not Available</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Allocated Branch:</span>
+                                <span class="status-value" id="allocatedBranchStatus">Not Allocated</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">Seat Confirmation:</span>
+                                <span class="status-value" id="seatConfirmation">Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="counseling-timeline">
+                    <h3>Counseling Timeline</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Profile Submission</h4>
+                                <p>Complete your personal and academic details</p>
+                                <span class="timeline-date">Step 1</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Rank Generation</h4>
+                                <p>Ranks will be generated based on 10+2 marks</p>
+                                <span class="timeline-date">Step 2</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Branch Allocation</h4>
+                                <p>Branches will be allocated based on rank and preferences</p>
+                                <span class="timeline-date">Step 3</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Payment & Confirmation</h4>
+                                <p>Pay the counseling fee and confirm your seat</p>
+                                <span class="timeline-date">Step 4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="counseling-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="checkRank()">
+                            <i class="fas fa-chart-line"></i>
+                            Check My Rank
+                        </button>
+                        <button class="action-btn" onclick="showRankingList()">
+                            <i class="fas fa-list-ol"></i>
+                            View All Rankings
+                        </button>
+                        <button class="action-btn" onclick="viewAllocation()">
+                            <i class="fas fa-building"></i>
+                            View Allocation
+                        </button>
+                        <button class="action-btn" onclick="previewDocuments()">
+                            <i class="fas fa-eye"></i>
+                            Preview Documents
+                        </button>
+                        <button class="action-btn" onclick="downloadDocuments()">
+                            <i class="fas fa-download"></i>
+                            Download Documents
+                        </button>
+                        <button class="action-btn" onclick="contactCounselor()">
+                            <i class="fas fa-phone"></i>
+                            Contact Counselor
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section id="payments" class="form-section">
+            <div class="container">
+                <h2>Payment Information</h2>
+                <div class="payment-info">
+                    <div class="payment-card">
+                        <h3>Counseling Fee</h3>
+                        <div class="fee-details">
+                            <p><strong>Amount:</strong> ₹5,000</p>
+                            <p><strong>Due Date:</strong> <span id="dueDate">15 days from allocation</span></p>
+                        </div>
+                        <div class="payment-status" id="paymentStatusCard">
+                            <p>Status: <span class="status-pending">Pending</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="paymentForm" class="dashboard-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="bankName">Bank Name *</label>
+                            <input type="text" id="bankName" name="bankName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="accountNumber">Account Number *</label>
+                            <input type="text" id="accountNumber" name="accountNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="transactionId">Transaction ID *</label>
+                            <input type="text" id="transactionId" name="transactionId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount Paid *</label>
+                            <input type="number" id="amount" name="amount" value="5000" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="receiptUpload">Upload Receipt *</label>
+                            <input type="file" id="receiptUpload" name="receiptUpload" accept="image/*,.pdf" required>
+                            <small>Upload a clear image or PDF of your payment receipt</small>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn" onclick="console.log('Payment submit button clicked!')">
+                            <i class="fas fa-upload"></i>
+                            Submit Payment Proof
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Offer Letter Modal -->
+    <div id="offerLetterModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOfferLetter()">&times;</span>
+            <div class="offer-letter">
+                <div class="letter-header">
+                    <h2>OFFER LETTER</h2>
+                    <p>Student Counseling Portal</p>
+                </div>
+                <div class="letter-content">
+                    <p><strong>Date:</strong> <span id="offerDate"></span></p>
+                    <p><strong>Student Name:</strong> <span id="offerStudentName"></span></p>
+                    <p><strong>Allocated Branch:</strong> <span id="allocatedBranch"></span></p>
+                    <p><strong>Total Marks:</strong> <span id="totalMarks"></span></p>
+                    <p><strong>Rank:</strong> <span id="studentRank"></span></p>
+                    
+                    <div class="letter-body">
+                        <p>Dear <span id="letterStudentName"></span>,</p>
+                        <p>Congratulations! We are pleased to inform you that you have been allocated to <strong><span id="letterBranch"></span></strong> based on your academic performance and preferences.</p>
+                        <p>Please complete the payment process and upload the receipt to confirm your admission.</p>
+                        <p>Best regards,<br>Student Counseling Committee</p>
+                    </div>
+                </div>
+                <div class="letter-actions">
+                    <button class="btn-primary" onclick="downloadOfferLetter()">
+                        <i class="fas fa-download"></i>
+                        Download PDF
+                    </button>
+                    <button class="btn-secondary" onclick="closeOfferLetter()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard-script.js"></script>
+</body>
+</html> 

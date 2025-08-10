@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Counseling - Your Path to Success</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="google-config.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudentCounsel</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="login-btn" onclick="showLoginModal()">Login</button>
+                <button class="signup-btn" onclick="showSignupModal()">Sign Up</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Particle Effects -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Student Counseling</span>
+                    <br>Portal
+                </h1>
+                <p class="hero-description">
+                    Your gateway to academic excellence. Get personalized guidance, track your progress, 
+                    and secure your future with our comprehensive counseling platform.
+                </p>
+                <div class="hero-buttons">
+                    <button class="cta-btn primary" onclick="showSignupModal()">
+                        Get Started
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="cta-btn secondary" onclick="showLoginModal()">
+                        Student Login
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Track Progress</h3>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Expert Guidance</h3>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Attendance</h3>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Get Certified</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Our Platform</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Student Portal</h3>
+                    <p>Submit your academic details, track your rankings, and manage your counseling process seamlessly.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Admin Panel</h3>
+                    <p>Comprehensive admin dashboard for managing students, allocating seats, and processing applications.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Payment System</h3>
+                    <p>Secure payment processing with receipt verification and automated offer letter generation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Academic Assessment</h3>
+                    <p>Comprehensive evaluation of your academic performance across all subjects.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-sort-amount-down"></i>
+                    <h3>Ranking System</h3>
+                    <p>Get your position based on total marks and subject-wise performance.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-building"></i>
+                    <h3>Branch Allocation</h3>
+                    <p>Smart seat allocation based on your preferences and academic standing.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Offer Letters</h3>
+                    <p>Automated generation of offer letters after successful payment verification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>counseling@studentportal.com</p>
+                        </div>
+                    </div>
+
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <div class="auth-container">
+                <h2>Welcome Back</h2>
+                <p>Sign in to your account</p>
+                
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="switchTab('student')">Student</button>
+                    <button class="tab-btn" onclick="switchTab('admin')">Admin</button>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign In</button>
+                </form>
+
+                <div class="social-login">
+                    <p>Or sign in with</p>
+                    <div class="social-buttons">
+                                                            <div id="g_id_onload"
+                                         data-client_id="452260251255-4mil8ci3nr4oiethmmom3lrgl3vg4aqc.apps.googleusercontent.com"
+                                         data-callback="handleGoogleCredentialResponse"
+                                         data-auto_prompt="false"
+                                         data-ux_mode="popup"
+                                         data-login_uri="">
+                        </div>
+                        <div class="g_id_signin"
+                             data-type="standard"
+                             data-size="large"
+                             data-theme="outline"
+                             data-text="sign_in_with"
+                             data-shape="rectangular"
+                             data-logo_alignment="left">
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="showSignupModal()">Sign up</a></p>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            <div class="auth-container">
+                <h2>Create Account</h2>
+                <p>Join our counseling platform</p>
+                
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="switchTab('student')">Student</button>
+                    <button class="tab-btn" onclick="switchTab('admin')">Admin</button>
+                </div>
+
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPhone">Phone Number</label>
+                        <input type="tel" id="signupPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <input type="password" id="signupConfirmPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            I agree to the Terms and Conditions
+                        </label>
+                    </div>
+                    <button type="submit" class="auth-btn">Create Account</button>
+                </form>
+
+                <div class="social-login">
+                    <p>Or sign up with</p>
+                    <div class="social-buttons">
+                                                            <div id="g_id_onload_signup"
+                                         data-client_id="452260251255-4mil8ci3nr4oiethmmom3lrgl3vg4aqc.apps.googleusercontent.com"
+                                         data-callback="handleGoogleCredentialResponse"
+                                         data-auto_prompt="false"
+                                         data-ux_mode="popup"
+                                         data-login_uri="">
+                        </div>
+                        <div class="g_id_signin"
+                             data-type="standard"
+                             data-size="large"
+                             data-theme="outline"
+                             data-text="signup_with"
+                             data-shape="rectangular"
+                             data-logo_alignment="left">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" onclick="showLoginModal()">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>StudentCounsel</h3>
+                    <p>Empowering students with comprehensive counseling and guidance for their academic journey.</p>
+
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Academic Assessment</a></li>
+                        <li><a href="#">Career Counseling</a></li>
+                        <li><a href="#">Branch Allocation</a></li>
+                        <li><a href="#">Payment Processing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-envelope"></i> counseling@studentportal.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 StudentCounsel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
